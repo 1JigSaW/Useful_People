@@ -52,5 +52,6 @@
 Данная страница содержит описание и функционал сайта.
 
 ### Макеты страниц
-##### 1. Главная: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=0%3A1
-##### 2. Вход: 
+##### 1. О нас: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=0%3A1
+##### 2. Главная: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=20%3A15
+##### 3. Регистрация: 
