@@ -54,4 +54,7 @@
 ### Макеты страниц
 ##### 1. О нас: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=0%3A1
 ##### 2. Главная: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=20%3A15
-##### 3. Регистрация: 
+##### 3. Регистрация: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=33%3A289
+##### 4. Вход: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=33%3A316
+##### 5. Отдельная страница пользователя: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=33%3A340
+##### 6. Чат: https://www.figma.com/file/tuYy87loW9V63OkQ5l39nV/UsefulPeople?node-id=44%3A24
