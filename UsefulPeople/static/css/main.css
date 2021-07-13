@@ -41,7 +41,7 @@ body {
 .logo {
 	margin-top: 5px;
 	height: 90%;
-	margin-right: 650px;
+	margin-right: 675px;
 }
 .login {
 	background: #000000;
@@ -50,15 +50,22 @@ body {
 	height: 58px;
 	border-radius: 20px;
 	border: 0;
+	font-size: 30px;
+	color: #FFFFFF;
+	font-family: 'Montserrat', sans-serif;
 }
 .signin {
 	background: #000000;
-	margin-left: 29px;
+	margin-left: 20px;
 	width: 181px;
 	height: 58px;
 	border-radius: 20px;
 	border: 0;
+	font-size: 30px;
+	color: #FFFFFF;
+	font-family: 'Montserrat', sans-serif;
 }
 .buttons_menu {
 	align-items: flex-end;
+	float: right;
 }
