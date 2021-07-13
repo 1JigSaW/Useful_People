@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'people',
 ]
 
 MIDDLEWARE = [
@@ -51,10 +52,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'UsefulPeople.urls'
 
+TEMPLATE_DIRS = (
+    os.path.join(SETTINGS_PATH, 'templates'),
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -75,8 +80,17 @@ WSGI_APPLICATION = 'UsefulPeople.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'usefulpeople',
+
+        'USER': 'jigsaw',
+
+        'PASSWORD': 'Razer197',
+
+        'HOST': 'localhost',
+
+        'PORT': '',
     }
 }
 
@@ -103,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
