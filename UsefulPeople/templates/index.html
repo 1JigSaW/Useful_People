@@ -1,10 +1,39 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>sdkfjsdk</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="img/favicon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"> 
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+	<title>UsefulPeople</title>
 </head>
 <body>
-
+	<header id="header" class="header">
+		<div class="container">
+			<div class="nav">
+				<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo">
+				<div class="buttons_menu">
+					<button class="login">
+						Log in
+					</button>
+					<button class="signin">
+						Sign in
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
 </body>
 </html>

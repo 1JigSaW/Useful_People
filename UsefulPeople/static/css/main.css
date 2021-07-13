@@ -1,0 +1,64 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	color: black;
+	font-size: 16px;
+	background: #B0FFFF;
+}
+
+* {
+	box-sizing: border-box;
+}
+.container {
+	width: 70%;
+	margin: 0 auto; 
+}
+.header {
+	display: inline-block;
+	width: 100%;
+	background: #46FFFF;
+	overflow: auto;
+}
+/*.menu {
+	display: flex;
+}
+.menu li a {
+	font-size: 30px;
+	letter-spacing: 0.1em;
+}
+.menu li a:hover {
+	border-bottom: 1px solid #fff;
+}*/
+
+/*.menu li {
+	margin-right: 40px;
+}*/
+.nav {
+	display: flex;
+	align-items: center;
+}
+.logo {
+	margin-top: 5px;
+	height: 90%;
+	margin-right: 650px;
+}
+.login {
+	background: #000000;
+	right: 10px;
+	width: 181px;
+	height: 58px;
+	border-radius: 20px;
+	border: 0;
+}
+.signin {
+	background: #000000;
+	margin-left: 29px;
+	width: 181px;
+	height: 58px;
+	border-radius: 20px;
+	border: 0;
+}
+.buttons_menu {
+	align-items: flex-end;
+}
