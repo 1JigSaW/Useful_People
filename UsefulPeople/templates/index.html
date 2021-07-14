@@ -1,19 +1,19 @@
 {% extends "base.html" %}
+
 {% load static %}
+
 {% block title %}UsefulPeople{% endblock %}
 
 {% block content %}
+{% url 'authorisation' as auth %}
+{% url 'registration' as reg %}
 <header id="header" class="header">
 	<div class="container">
 		<div class="nav">
 			<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo">
 			<div class="buttons_menu">
-				<button class="login">
-					<a href="{% url 'authorisation' %}">Log in</a>
-				</button>
-				<button class="signin">
-					<a href="{% url 'registration' %}">Sign in</a>
-				</button>
+				<a href="/authorisation/" class="login">Log in</a>
+				<a href="/registration/" class="signin">Sign in</a>
 			</div>
 		</div>
 	</div>

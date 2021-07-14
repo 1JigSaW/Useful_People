@@ -1,2 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}Auth{% endblock %}
+
+{% block content %}
+<section>
+	<div class="auth_block">
+	    <h1>New post</h1>
+	    <form method="POST" class="post-form">{% csrf_token %}
+	        {{ form.as_p }}
+	        <button type="submit" class="save btn btn-default">Save</button>
+	    </form>
+	</div>
+</section>
+{% endblock %}
