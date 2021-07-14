@@ -1,55 +1,40 @@
+{% extends "base.html" %}
 {% load static %}
+{% block title %}UsefulPeople{% endblock %}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="img/favicon.png" type="image/x-icon">
-	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon"> 
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-	<title>UsefulPeople</title>
-</head>
-<body>
-	<header id="header" class="header">
-		<div class="container">
-			<div class="nav">
-				<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo">
-				<div class="buttons_menu">
-					<button class="login">
-						Log in
-					</button>
-					<button class="signin">
-						Sign in
-					</button>
-				</div>
+{% block content %}
+<header id="header" class="header">
+	<div class="container">
+		<div class="nav">
+			<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo">
+			<div class="buttons_menu">
+				<button class="login">
+					<a href="{% url 'authorisation' %}">Log in</a>
+				</button>
+				<button class="signin">
+					<a href="{% url 'registration' %}">Sign in</a>
+				</button>
 			</div>
 		</div>
-	</header>
-	<section id="about" class="about">
-		<div class="container">
-			<h2>About the event</h2>
-			<div class="description">
-				<div class="desc-left">
-					<h3>Rebuilding the society</h3>
-					<p>
-						Burning Man is a network of people inspired by the values reflected in the Ten Principles and united in the pursuit of a more creative and connected existence in the world. Throughout the year we work to build Black Rock City, home of the largest annual Burning Man gathering, and nurture the distinctive culture emerging from that experience. 
-					</p>
-				</div>
-				<div class="desc-right">
-					<img src="{% static 'img/people.svg' %}" alt="main photo" class="logo">
-				</div>			
+	</div>
+</header>
+<section id="about" class="about">
+	<div class="container">
+		<div class="description">
+			<div class="desc-left">
+				<h3 class="main_text">Нужный человек в один клик</h3>
+				<p class="main_subtext">
+					Онлайн ресурс для поиска человека с определенными навыками для реализации 
+					вашего проекта
+				</p>
+				<button class="search_man">
+					Найти человека
+				</button>
 			</div>
+			<div class="desc-right">
+				<img src="{% static 'img/people.svg' %}" alt="main photo" class="main_photo">
+			</div>			
 		</div>
-	</section>
-</body>
-</html>
+	</div>
+</section>
+{% endblock %}
