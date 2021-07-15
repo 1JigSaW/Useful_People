@@ -168,3 +168,67 @@ body {
 	font-size: 20px;
 	margin-left: 15px;
 }
+.reg_block {
+	position: absolute;
+	width: 38%;
+	height: 47%;
+	background: #46FFFF;
+	border: 2.7px solid;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.reg_head {
+	margin: 0;
+	margin-top: 7px;
+	font-size: 47px;
+	font-family: 'Montserrat', sans-serif;
+}
+.input_log_2, .input_passwd_2, .input_email_2, .input_passwd2_2 {
+	margin-right: 10%;
+	float: right;
+	font-size: 32px;
+	width: 70%;
+	border-radius: 15px;
+	border: 2.5px solid;
+	margin-top: 18px;
+}
+.post_form {
+	padding: 0px;
+	font-size: 30px;
+}
+.label_reg_log, .label_reg_email, .label_reg_password, .label_reg_password2 {
+	float: left;
+	font-size: 20px;
+	margin-left: 15px;
+}
+.label_reg_log {
+	padding-top: 25px;
+}
+.label_reg_email {
+	padding-top: 38px;
+}
+.label_reg_password {
+	padding-top: 37px;
+}
+.label_reg_password2 {
+	text-align: left;
+	line-height: 90%;
+	padding-top: 32px;
+	word-wrap: break-word;
+}
+.reg_button {
+	font-size: 30px;
+	width: 77%;
+	height: 60px;
+	border: 0;
+	border-radius: 15px;
+	color: #ffffff;
+	background: #F91D45;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 15px;
+}

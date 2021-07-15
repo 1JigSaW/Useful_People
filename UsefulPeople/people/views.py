@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from .forms import UsersForm
+from .forms import UsersForm, UsersRegistrationForm
 
 def index(request):
     return render(request, 'index.html')
 
 def registration(request):
-    return render(request, 'registration.html')
+    form = UsersRegistrationForm()
+    return render(request, 'registration.html', {'form': form})
 
 def authorisation(request):
     form = UsersForm()

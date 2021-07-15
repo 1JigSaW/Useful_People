@@ -1,2 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+<section>
+	<div class="reg_block">
+	    <h1 class="reg_head">Регистрация</h1>
+	    <form method="POST" class="post-form_2">{% csrf_token %}
+	    	<div class="label_reg_log">
+		    	<label for="registratiom">Логин</label>
+		    </div>
+		    {{ form.login }}
+		    <div class="label_reg_email">
+		    	<label for="registratiom">Email</label>
+		    </div>
+		    {{ form.email }}
+	        <div class="label_reg_password">
+		        <label for="registratiom">Пароль</label>
+		    </div>
+		    {{ form.password }}
+		    <div class="label_reg_password2">
+		        <label for="registratiom">Повторите<br>пароль</label>
+		    </div>
+		    {{ form.password2 }}
+	        <button type="submit" class="reg_button">Зарегестрироваться</button>
+	    </form>
+	</div>
+</section>
+{% endblock %}
