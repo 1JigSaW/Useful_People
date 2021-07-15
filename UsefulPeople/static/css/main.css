@@ -119,7 +119,7 @@ body {
 	width: 30%;
 	height: 32%;
 	background: #46FFFF;
-	border: 2.5px solid;
+	border: 2.7px solid;
 	top: 50%;
     left: 50%;
     margin-right: -50%;
@@ -133,14 +133,38 @@ body {
 	font-size: 50px;
 }
 .post_form {
-	padding: 0;
+	padding: 0px;
 	font-size: 30px;
 }
-.input_log {
+.input_log, .input_passwd {
 	margin-right: 10%;
 	float: right;
 	font-size: 40px;
 	width: 70%;
 	border-radius: 15px;
 	border: 2.5px solid;
+	margin-top: 10px;
+}
+.auth_button {
+	font-size: 30px;
+	width: 77%;
+	height: 45px;
+	border: 0;
+	border-radius: 15px;
+	color: #ffffff;
+	background: #F91D45;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 15px;
+}
+.label_login {
+	float: left;
+	padding-top: 22.5px;
+	font-size: 20px;
+	margin-left: 15px;
+}
+.label_password {
+	float: left;
+	padding-top: 40px;
+	font-size: 20px;
+	margin-left: 15px;
 }
