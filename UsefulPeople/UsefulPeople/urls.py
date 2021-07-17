@@ -19,7 +19,7 @@ from people.views import index, authorisation, registration
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', index),
+    path('', index),
     path('registration/', registration),
     path('authorisation/', authorisation), 
 ]

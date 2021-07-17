@@ -232,3 +232,14 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	margin-top: 15px;
 }
+.reg_done_block {
+	position: absolute;
+	width: 38%;
+	height: 47%;
+	background: #46FFFF;
+	border: 2.7px solid;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}

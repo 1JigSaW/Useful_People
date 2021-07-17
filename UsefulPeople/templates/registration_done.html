@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Успешная регистрация{% endblock %}
+
+{% block content %}
+    <div class="reg_done_block">
+        <h1>Вы успешно зарегестрировались, {{ new_user.login }}!</h1>
+        <p>Войдити пожалуйста в аккаунт, чтобы начать работу</p>
+    </div>
+{% endblock %}
