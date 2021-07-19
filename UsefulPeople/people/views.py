@@ -5,14 +5,15 @@ def index(request):
     return render(request, 'index.html')
 
 def registration(request):
+    errors = []
     if request.method == 'POST':
         user_form = UsersRegistrationForm(request.POST)
         if user_form.is_valid():
             new_user = user_form.save()
             return render(request, 'registration_done.html', {'new_user': new_user})
         else:
-            user_form = UsersRegistrationForm(request.POST)
-            return redirect('registration.html')
+            form = UsersRegistrationForm()
+            return render(request, 'registration.html', {'form': form})
     else:
         form = UsersRegistrationForm()
         return render(request, 'registration.html', {'form': form})
