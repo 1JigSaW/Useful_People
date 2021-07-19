@@ -13,7 +13,11 @@ def registration(request):
             return render(request, 'registration_done.html', {'new_user': new_user})
         else:
             form = UsersRegistrationForm()
-            return render(request, 'registration.html', {'form': form})
+            errors.append('Пароли не совпадают!')
+            return render(request, 'registration.html', 
+                {'form': form,
+                'errors': errors,
+                })
     else:
         form = UsersRegistrationForm()
         return render(request, 'registration.html', {'form': form})

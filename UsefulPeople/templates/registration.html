@@ -4,6 +4,11 @@
 
 {% block content %}
 <section>
+	{% if errors %}
+		{% for error in errors %}
+			<h2 class="alert_errors">{{ error }}</h4>
+		{% endfor %}
+	{% endif %}
 	<div class="reg_block">
 		<h1 class="reg_head">Регистрация</h1>
 		<form method="POST" class="post-form_2">{% csrf_token %}
@@ -27,18 +32,6 @@
 			</div>
 			{{ form.password2 }}
 			<button type="submit" class="reg_button">Зарегестрироваться</button>
-			{% if form.errors %}
-				<div id="errors">
-					<div class="inner">
-						<p>There were some errors in the information you entered. Please correct the following:</p>
-						<ul>
-							{% for field in form %}
-								{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
-							{% endfor %}
-						</ul>
-					</div>
-				</div>
-			{% endif %}
 		</form>
 	</div>
 </section>
