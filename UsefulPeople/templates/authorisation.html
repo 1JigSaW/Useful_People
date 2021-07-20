@@ -4,6 +4,11 @@
 
 {% block content %}
 <section>
+	{% if errors %}
+		{% for error in errors %}
+			<h2 class="alert_errors">{{ error }}</h4>
+		{% endfor %}
+	{% endif %}
 	<div class="auth_block">
 	    <h1 class="auth_head">Вход</h1>
 	    <form method="POST" class="post-form">{% csrf_token %}

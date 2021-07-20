@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UsersForm, UsersRegistrationForm
+from django.http import Http404, HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate
 
 def index(request):
     return render(request, 'index.html')
@@ -23,5 +25,31 @@ def registration(request):
         return render(request, 'registration.html', {'form': form})
 
 def authorisation(request):
-    form = UsersForm()
-    return render(request, 'authorisation.html', {'form': form})
+    errors = []
+    if request.method == 'POST':
+        form = UsersForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(login=cd['login'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    errors.append('Вы успешно зарегестрированы')
+                    return render(request, 'registration_done.html', {'form': form,
+                        'errors': errors})
+                else:
+                    errors.append('Несуществующий аккаунт')
+                    return HttpResponse('Disabled account')
+
+            else:
+                errors.append('Неправильный логин')
+                return HttpResponse('Invalid login')
+        else:
+            errors.append('Введите корректные данные')
+            form = UsersForm()
+            return render(request, 'authorisation.html', {'form': form,
+                'errors': errors})
+    else:
+        form = UsersForm()
+    return render(request, 'authorisation.html', {'form': form,
+        'errors': errors})
