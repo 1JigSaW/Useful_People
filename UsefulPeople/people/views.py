@@ -31,19 +31,15 @@ def authorisation(request):
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(login=cd['login'], password=cd['password'])
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    errors.append('Вы успешно зарегестрированы')
-                    return render(request, 'registration_done.html', {'form': form,
-                        'errors': errors})
-                else:
-                    errors.append('Несуществующий аккаунт')
-                    return HttpResponse('Disabled account')
-
+            if user.is_active:
+                login(request, user)
+                errors.append('Вы успешно зарегестрированы')
+                return render(request, 'registration_done.html', {'form': form,
+                    'errors': errors})
             else:
-                errors.append('Неправильный логин')
-                return HttpResponse('Invalid login')
+                errors.append('Несуществующий аккаунт')
+                return HttpResponse('Disabled account')
+
         else:
             errors.append('Введите корректные данные')
             form = UsersForm()
