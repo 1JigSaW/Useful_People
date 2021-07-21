@@ -269,9 +269,15 @@ body {
 	text-align: center;
 }
 .alert_errors {
-	padding-top: 10%;
+	padding-top: 5%;
 	margin: 0;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: #FF0000;
+}
+.errors_password {
+	margin: 0;
+	padding: 0;
+	color: #FF0000;
+	
 }

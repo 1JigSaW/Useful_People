@@ -4,10 +4,12 @@
 
 {% block content %}
 <section>
-	{% if errors %}
-		{% for error in errors %}
-			<h2 class="alert_errors">{{ error }}</h4>
-		{% endfor %}
+	{% if user_form.errors %}
+	   {% for field in user_form %}
+	      {% for error in field.errors %}
+	          <h3 class="errors_password">{{ error|escape }}</h3>
+	      {% endfor %}
+	   {% endfor %}
 	{% endif %}
 	<div class="reg_block">
 		<h1 class="reg_head">Регистрация</h1>
@@ -18,7 +20,7 @@
 			<div class="label_reg_log">
 				<label for="registratiom">Логин</label>
 			</div>
-			{{ form.login }}
+			{{ form.username }}
 			<div class="label_reg_email">
 				<label for="registratiom">Email</label>
 			</div>
@@ -26,7 +28,7 @@
 			<div class="label_reg_password">
 				<label for="registratiom">Пароль</label>
 			</div>
-			{{ form.password }}
+			{{ form.password1 }}
 			<div class="label_reg_password2">
 				<label for="registratiom">Повторите<br>пароль</label>
 			</div>

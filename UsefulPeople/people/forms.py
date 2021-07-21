@@ -1,49 +1,52 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Users
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 
-class UsersForm(forms.ModelForm):
+class UsersForm(AuthenticationForm):
 
     class Meta:
-        model = Users
-        fields = ('login', 'password',)
+        model = User
+        fields = ('username', 'password',)
         labels = {
-            'login': _('Логин'),
+            'username': _('Логин'),
             'password': _('Пароль')
         }
 
     def __init__(self, *args, **kwargs):
         super(UsersForm, self).__init__(*args, **kwargs)
-        self.fields['login'].widget = forms.TextInput(attrs={
+        self.fields['username'].widget = forms.TextInput(attrs={
             'class': 'input_log',
             })
         self.fields['password'].widget = forms.TextInput(attrs={
             'class': 'input_passwd',
             })
 
-class UsersRegistrationForm(forms.ModelForm):
-    password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput(attrs={
-            'class': 'input_passwd2_2',
-            }))
+class UsersRegistrationForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
     class Meta:
-        model = Users
-        fields = ('login', 'email', 'password')
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(UsersRegistrationForm, self).__init__(*args, **kwargs)
-        self.fields['login'].widget = forms.TextInput(attrs={
+        self.fields['username'].widget = forms.TextInput(attrs={
             'class': 'input_log_2',
             })
-        self.fields['password'].widget = forms.TextInput(attrs={
+        self.fields['password1'].widget = forms.TextInput(attrs={
             'class': 'input_passwd_2',
             })
         self.fields['email'].widget = forms.TextInput(attrs={
             'class': 'input_email_2',
             })
+        self.fields['password2'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd2_2',
+            })
 
     def clean_password2(self):
         cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
-            raise forms.ValidationError('Passwords don\'t match.')
+        if cd['password1'] != cd['password2']:
+            raise forms.ValidationError('Пароли не совпадают')
         return cd['password2']
