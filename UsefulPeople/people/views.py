@@ -3,6 +3,7 @@ from .forms import UsersForm, UsersRegistrationForm
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 
 def index(request):
     return render(request, 'index.html')
@@ -24,23 +25,27 @@ def registration(request):
         return render(request, 'registration.html', {'form': form})
 
 def authorisation(request):
+    errors = []
     if request.method == 'POST':
         form = UsersForm(request.POST)
-        if form.is_valid():
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return render(request, 'registration_done.html', {'form': form})
-                else:
-                    return HttpResponse('Disabled account')
-
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return render(request, 'main.html', {'form': form})
             else:
-                return HttpResponse('Invalid login')
+                errors.append('Данные не верны')
+                return render(request, 'authorisation.html', {'form': form,
+                    'errors': errors})
+
         else:
-            return render(request, 'authorisation.html', {'form': form})
+            errors.append('Такого пользователя не существует')
+            return render(request, 'authorisation.html', {'form': form,
+                'errors': errors})
     else:
         form = UsersForm()
-        return render(request, 'authorisation.html', {'form': form})
+    return render(request, 'authorisation.html', {'form': form,
+        'errors': errors})
+

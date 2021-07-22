@@ -4,12 +4,10 @@
 
 {% block content %}
 <section>
-	{% if form.errors %}
-	   {% for field in form %}
-	      {% for error in field.errors %}
-	          <h3 class="errors_password">{{ error|escape }}</h3>
-	      {% endfor %}
-	   {% endfor %}
+	{% if errors %}
+		{% for error in errors %}
+			<h3 class="errors_password">{{ error }}</h3>
+		{% endfor %}
 	{% endif %}
 	<div class="auth_block">
 	    <h1 class="auth_head">Вход</h1>
