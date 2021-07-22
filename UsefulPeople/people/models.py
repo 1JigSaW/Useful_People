@@ -15,6 +15,13 @@ from django.db import models
 class Skills(models.Model):
 	skills = models.CharField(max_length=50)
 
+	def __str__(self):
+		return f"{self.skills}"
+
+	class Meta:
+		verbose_name = 'Навык'
+		verbose_name_plural = 'Навыки'
+
 class Experience(models.Model):
 	company_name = models.CharField(max_length=50)
 	position = models.CharField(max_length=100)
@@ -22,15 +29,37 @@ class Experience(models.Model):
 	mounth_of_work = models.IntegerField()
 	photo_work = models.ImageField(upload_to='photo_works')
 
+	def __str__(self):
+		return f"{self.company_name}"
+
+	class Meta:
+		verbose_name = 'Опыт работы'
+		verbose_name_plural = 'Опыт работ'
+
+
 class Education(models.Model):
 	university_name = models.CharField(max_length=100)
 	direction = models.CharField(max_length=50)
 	start_training = models.DateField()
 	end_training = models.DateField()
 
+	def __str__(self):
+		return f"{self.university_name}"
+
+	class Meta:
+		verbose_name = 'Дополнительное образование'
+		verbose_name_plural = 'Дополнительные образования'
+
 class Achievements(models.Model):
 	topic = models.CharField(max_length=100)
 	description = models.TextField()
+
+	def __str__(self):
+		return f"{self.topic}"
+
+	class Meta:
+		verbose_name = 'Достижение'
+		verbose_name_plural = 'Достижения'
 
 class UserAccount(models.Model):
 	# user_id = models.ForeignKey(User, on_delete=models.CASCADE,)
@@ -46,4 +75,11 @@ class UserAccount(models.Model):
 	additional_education = models.ManyToManyField(Education)
 	achievements = models.ManyToManyField(Achievements)
 	additional_information = models.TextField()
+
+	def __str__(self):
+		return f'{self.first_name}, {self.last_name}'
+
+	class Meta:
+		verbose_name = 'Аккаунт'
+		verbose_name_plural = 'Аккаунты'
 
