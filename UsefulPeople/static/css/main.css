@@ -281,6 +281,15 @@ body {
 	color: #FF0000;
 	margin-left: 10px;
 }
+.logo_main {
+	margin-top: 5px;
+	height: 90%;
+	margin-right: 55%;
+}
+.head_main_menu {
+	align-items: flex-end;
+	float: right;
+}
 .chat {
 	height: 30%;
 }
