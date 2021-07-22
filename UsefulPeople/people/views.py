@@ -49,3 +49,5 @@ def authorisation(request):
     return render(request, 'authorisation.html', {'form': form,
         'errors': errors})
 
+def main(request):
+    return render(request, 'main.html')

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # class Users(models.Model):
 # 	login = models.CharField(max_length=50, blank=False)
 # 	email = models.CharField(max_length=50, blank=False)
@@ -27,7 +27,7 @@ class Experience(models.Model):
 	position = models.CharField(max_length=100)
 	years_of_work = models.IntegerField()
 	mounth_of_work = models.IntegerField()
-	photo_work = models.ImageField(upload_to='photo_works')
+	photo_work = models.ImageField(upload_to='static/photo_works')
 
 	def __str__(self):
 		return f"{self.company_name}"
@@ -69,7 +69,7 @@ class UserAccount(models.Model):
 	country = models.CharField(max_length=40)
 	city = models.CharField(max_length=40)
 	university = models.CharField(max_length=100)
-	photo = models.ImageField(upload_to='photos')
+	photo = models.ImageField(upload_to='static/photos')
 	skills = models.ManyToManyField(Skills)
 	experience = models.ManyToManyField(Experience)
 	additional_education = models.ManyToManyField(Education)

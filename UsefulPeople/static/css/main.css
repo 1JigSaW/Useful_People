@@ -281,3 +281,55 @@ body {
 	color: #FF0000;
 	margin-left: 10px;
 }
+.chat {
+	height: 30%;
+}
+.account {
+	margin-left: 17px;
+	height: 30%;
+}
+.logout {
+	margin-left: 17px;
+	height: 30%;
+}
+.main_block {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+.desc-left-main {
+	margin: 0;
+	padding: 0;
+	height: 230px;
+	width: 48%;
+	border-radius: 15px;
+	border: 2.7px solid;
+	background: #FEFEFE;
+}
+.ph_acc_main {
+	float: left;
+	margin-top: 6px;
+	margin-left: 6px;
+	margin-right: 20px;
+	height: 210px;
+	width: 210px;
+}
+.desc_acc_main {
+	float: left;
+}
+
+.main_profession {
+	margin-top: 30px;
+}
+.acc_skills {
+
+}
+.skill {
+	float: left;
+	background: #C4C4C4;
+	width: 50%;
+	height: 30px;
+	text-align: center;
+	border-radius: 15px;
+	line-height: 2px;
+}
