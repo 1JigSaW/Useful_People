@@ -22,23 +22,25 @@
 			<button class="search_button">Search</button>
 		</div>
 		<div class="desc-left-main">
+			{% if accounts.count > 0 %}
 			<div class="main_block">
-				<img class="ph_acc_main" src="{% static 'img/temp_ph.svg' %}">
+				{% for account in accounts %}
+				<img class="ph_acc_main" src={{ account.photo }}>
 				<div class="desc_acc_main">
-					<h2 class="main_name">Андрей Павлов</h2>
-					<h2 class="main_profession">Google IT</h2>
+					<h2 class="main_name">{{ account.first_name }} {{ account.last_name }}</h2>
+					<h2 class="main_profession">{{ account.profession }}</h2>
+					<!-- {% if skills %} -->
 					<div class="acc_skills">
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-						<div class="skill"><p>python</p></div>
-					</div>	
-				</div>	
+						<div class="skill"><p>{{ account.skills }}</p></div>
+					</div>
+					<!-- {% endif %}	 -->
+					{% for skill in account.skills.all %}
+					    <p>{{ skill }}</p>
+					{% endfor %}
+				</div>
+				{% endfor %}	
 			</div>
+			{% endif %}
 			<div class="main_block">
 				<img class="ph_acc_main" src="{% static 'img/temp_ph.svg' %}">
 				<div class="desc_acc_main">

@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
+from .models import UserAccount, Skills, Experience, Education, Achievements
 
 def index(request):
     return render(request, 'index.html')
@@ -50,4 +51,6 @@ def authorisation(request):
         'errors': errors})
 
 def main(request):
-    return render(request, 'main.html')
+    accounts = UserAccount.objects.all()
+    # skills = Skills.objects.all()
+    return render(request, 'main.html', {'accounts': accounts,})
