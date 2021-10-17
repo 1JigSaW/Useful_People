@@ -5,9 +5,15 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import UserAccount, Skills, Experience, Education, Achievements
+from django.urls import reverse
 
 def index(request):
     return render(request, 'index.html')
+
+def main(request):
+    accounts = UserAccount.objects.all()
+    # skills = Skills.objects.all()
+    return render(request, 'main.html', {'accounts': accounts,})
 
 def registration(request):
     if request.method == 'POST':
@@ -35,7 +41,7 @@ def authorisation(request):
             if user.is_active:
                 login(request, user)
                 print(form)
-                return render(request, 'main.html', {'form': form})
+                return redirect('main')
             else:
                 errors.append('Данные не верны')
                 return render(request, 'authorisation.html', {'form': form,
@@ -50,7 +56,3 @@ def authorisation(request):
         return render(request, 'authorisation.html', {'form': form,
             'errors': errors})
 
-def main(request):
-    accounts = UserAccount.objects.all()
-    # skills = Skills.objects.all()
-    return render(request, 'main.html', {'accounts': accounts,})

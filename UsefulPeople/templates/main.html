@@ -29,9 +29,6 @@
 				<div class="desc_acc_main">
 					<h2 class="main_name">{{ account.first_name }} {{ account.last_name }}</h2>
 					<h2 class="main_profession">{{ account.profession }}</h2>
-					<div class="acc_skills">
-						<div class="skill"><p>{{ account.skills }}</p></div>
-					</div>
 					{% for skill in account.skills.all %}
 					    <p>{{ skill }}</p>
 					{% endfor %}
