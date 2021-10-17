@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from people.views import index, authorisation, registration, main
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('index/', index),
     path('registration/', registration),
     path('authorisation/', authorisation), 
-    path('main/', main, name='main'), 
-]
+    path('', main, name='main'), 
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
+
