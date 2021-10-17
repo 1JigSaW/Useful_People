@@ -8,6 +8,8 @@ from .models import UserAccount, Skills, Experience, Education, Achievements
 from django.urls import reverse
 
 def index(request):
+    if request.user.is_authenticated:
+        return redirect('main')
     return render(request, 'index.html')
 
 def main(request):
@@ -16,6 +18,8 @@ def main(request):
     return render(request, 'main.html', {'accounts': accounts,})
 
 def registration(request):
+    if request.user.is_authenticated:
+        return redirect('main')
     if request.method == 'POST':
         user_form = UsersRegistrationForm(request.POST)
         if user_form.is_valid():
@@ -31,6 +35,8 @@ def registration(request):
         return render(request, 'registration.html', {'form': form})
 
 def authorisation(request):
+    if request.user.is_authenticated:
+        return redirect('main')
     errors = []
     if request.method == 'POST':
         form = UsersForm(request.POST)
