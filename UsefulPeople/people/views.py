@@ -14,8 +14,7 @@ def registration(request):
         user_form = UsersRegistrationForm(request.POST)
         if user_form.is_valid():
             form = user_form.save()
-            return render(request, 'registration_done.html', {'form': form, 
-                'user_form': user_form})
+            return render(request, 'registration_done.html', {'form': form})
         else:
             form = UsersRegistrationForm()
             return render(request, 'registration.html', 
@@ -35,6 +34,7 @@ def authorisation(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
+                print(form)
                 return render(request, 'main.html', {'form': form})
             else:
                 errors.append('Данные не верны')
@@ -47,8 +47,8 @@ def authorisation(request):
                 'errors': errors})
     else:
         form = UsersForm()
-    return render(request, 'authorisation.html', {'form': form,
-        'errors': errors})
+        return render(request, 'authorisation.html', {'form': form,
+            'errors': errors})
 
 def main(request):
     accounts = UserAccount.objects.all()
