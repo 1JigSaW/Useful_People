@@ -63,5 +63,4 @@ def authorisation(request):
 
 def page(request, id):
     account = UserAccount.objects.get(pk=id)
-    print(account)
     return render(request, 'page.html', {'account': account,})

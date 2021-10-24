@@ -317,6 +317,8 @@ body {
 	background: #FEFEFE;
 	border-radius: 15px;
 	border: 2.7px solid;
+	padding-left: 12px;
+	font-size: 22px;
 }
 .search_button {
 	float: left;
