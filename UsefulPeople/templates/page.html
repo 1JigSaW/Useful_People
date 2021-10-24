@@ -26,11 +26,41 @@
 				<h2 class="page_place">{{ account.city }}, {{ account.country }}</h2>
 				<h2 class="page_university">{{ account.university }}</h2>
 			</div>
-			{% endfor %}
 			<div class="desc_button_page">
 				<a href="#" class="message_to">Написать</a>
-			</div>	
+			</div>
+			<div><h2 class="page_title">Навыки:</h2></div>	
+			<div class="page_block_info">
+				<div class="page_skills">
+					{% for skill in account.skills.all %}
+					    <div class="page_skill"><p>{{ skill }}</p></div>
+					{% endfor %}
+				</div>
+			</div>
+			<div><h2 class="page_title">Опыт работы:</h2></div>
+			{% for experience in account.experience.all %}
+				<div class="page_block_info">
+					<img class="ph_expirience_page" src={{ experience.photo_work }}>
+					<div class="desc_acc_page">
+						<h1 class="page_upperblock">{{ experience.company_name }}</h1>
+						<h2 class="page_lowerblock">{{ experience.position }}</h2>
+						<h2 class="page_lowerblock">{{ experience.years_of_work }} года, {{ experience.mounth_of_work }} месяца</h2>
+					</div>
+				</div>
+			{% endfor %}
+			<div><h2 class="page_title">Дополнительное образование:</h2></div>
+			{% for education in account.additional_education.all %}
+				<div class="page_block_info">
+					<img class="ph_expirience_page" src={{ education.photo_education }}>
+					<div class="desc_acc_page">
+						<h1 class="page_upperblock">{{ education.university_name }}</h1>
+						<h2 class="page_lowerblock">{{ education.direction }}</h2>
+						<h2 class="page_lowerblock">{{ education.start_training }} - {{ education.end_training }}</h2>
+					</div>
+				</div>
+			{% endfor %}
 		</div>
+		{% endfor %}
 	</div>
 </section>
 {% endblock %}

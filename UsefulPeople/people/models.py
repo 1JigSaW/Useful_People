@@ -43,6 +43,9 @@ class Education(models.Model):
 	direction = models.CharField(max_length=50)
 	start_training = models.DateField()
 	end_training = models.DateField()
+	photo_education = models.ImageField(
+		upload_to='static/photo_education'
+	)
 
 	def __str__(self):
 		return f"{self.university_name}"
