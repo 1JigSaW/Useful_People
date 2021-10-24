@@ -18,7 +18,6 @@
 <section id="about" class="about">
 	<div class="container">
 		<div class="page_all_block">
-			{% for account in accounts %}
 			<img class="ph_acc_page" src={{ account.photo }}>
 			<div class="desc_acc_page">
 				<h1 class="page_name">{{ account.first_name }} {{ account.last_name }}</h1>
@@ -69,15 +68,12 @@
 				</div>
 			{% endfor %}
 			<div><h2 class="page_title">О себе:</h2></div>
-			{% for account in accounts %}
 				<div class="page_block_info">
 					<div class="desc_acc_page_add">
 						<h2 class="page_lowerblock_add">{{ account.additional_information }}</h2>
 					</div>
 				</div>
-			{% endfor %}
 		</div>
-		{% endfor %}
 	</div>
 </section>
 {% endblock %}

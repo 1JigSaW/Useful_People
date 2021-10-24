@@ -23,20 +23,22 @@
 		</div>
 		<div class="desc-left-main">
 			{% if accounts.count > 0 %}
-			<div class="main_block">
 				{% for account in accounts %}
-				<img class="ph_acc_main" src={{ account.photo }}>
-				<div class="desc_acc_main">
-					<h2 class="main_name">{{ account.first_name }} {{ account.last_name }}</h2>
-					<h2 class="main_profession">{{ account.profession }}</h2>
-					<div class="acc_skills">
-					{% for skill in account.skills.all %}
-					    <div class="skill"><p>{{ skill }}</p></div>
-					{% endfor %}
+				<a style="display:block" href="{% url 'page' account.id%}">
+					<div class="main_block">
+						<img class="ph_acc_main" src={{ account.photo }}>
+						<div class="desc_acc_main">
+							<h2 class="main_name">{{ account.first_name }} {{ account.last_name }}</h2>
+							<h2 class="main_profession">{{ account.profession }}</h2>
+							<div class="acc_skills">
+							{% for skill in account.skills.all %}
+							    <div class="skill"><p>{{ skill }}</p></div>
+							{% endfor %}
+							</div>
+						</div>	
 					</div>
-				</div>
-				{% endfor %}	
-			</div>
+				</a>
+				{% endfor %}
 			{% endif %}
 			<div class="main_block">
 				<img class="ph_acc_main" src="{% static 'img/temp_ph.svg' %}">

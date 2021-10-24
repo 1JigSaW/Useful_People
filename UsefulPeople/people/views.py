@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UsersForm, UsersRegistrationForm
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
@@ -61,6 +61,7 @@ def authorisation(request):
         return render(request, 'authorisation.html', {'form': form,
             'errors': errors})
 
-def page(request):
-    accounts = UserAccount.objects.all()
-    return render(request, 'page.html', {'accounts': accounts,})
+def page(request, id):
+    account = UserAccount.objects.get(pk=id)
+    print(account)
+    return render(request, 'page.html', {'account': account,})

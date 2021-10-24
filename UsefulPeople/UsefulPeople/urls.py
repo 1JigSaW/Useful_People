@@ -25,6 +25,6 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('authorisation/', authorisation, name='authorisation'), 
     path('', main, name='main'), 
-    path('page', page, name='page'), 
+    path('<id>', page, name='page'), 
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
 
