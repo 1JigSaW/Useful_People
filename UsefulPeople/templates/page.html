@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Page{% endblock %}
+
+{% block content %}
+<header id="header" class="header">
+	<div class="container">
+		<div class="nav">
+			<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo_main">
+			<div class="head_main_menu">
+				<a href="/chat/" class="chat"><img src="{% static 'img/chat.svg' %}" alt="chat"></a>
+				<a href="/account/" class="account"><img src="{% static 'img/account.svg' %}" alt="account"></a>
+				<a href="/logout/" class="logout"><img src="{% static 'img/logout.svg' %}" alt="logout"></a>
+			</div>
+		</div>
+	</div>
+</header>
+<section id="about" class="about">
+	<div class="container">
+		<div class="page_all_block">
+			{% for account in accounts %}
+			<img class="ph_acc_page" src={{ account.photo }}>
+			<div class="desc_acc_page">
+				<h1 class="page_name">{{ account.first_name }} {{ account.last_name }}</h1>
+				<h2 class="page_profession">{{ account.profession }}</h2>
+				<h2 class="page_place">{{ account.city }}, {{ account.country }}</h2>
+				<h2 class="page_university">{{ account.university }}</h2>
+			</div>
+			{% endfor %}
+			<div class="desc_button_page">
+				<a href="#" class="message_to">Написать</a>
+			</div>	
+		</div>
+	</div>
+</section>
+{% endblock %}

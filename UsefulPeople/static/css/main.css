@@ -383,3 +383,74 @@ body {
 	font-size: 15px;
 	margin-top: 10px;
 }
+.page_all_block {
+	float: left;
+	margin: 5px;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 15px;
+	border: 2.7px solid;
+	background: #FEFEFE;
+}
+.ph_acc_page {
+	float: left;
+	margin-top: 6px;
+	margin-left: 6px;
+	margin-right: 15px;
+	height: 250px;
+	width: 20%;
+}
+.desc_acc_page {
+	display: inline-block;
+	float: left;
+	width: 35%;
+}
+.page_name {
+	float: left;
+	width: 100%;
+	font-size: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.page_profession {
+	float: left;
+	margin-top: 10px;
+	font-size: 30px;
+	margin-bottom: 15px;
+}
+.page_place {
+	float: left;
+	margin-top: 10px;
+	width: 100%;
+	font-size: 30px;
+	margin-bottom: 15px;
+}
+.page_university {
+	float: left;
+	margin-top: 10px;
+	width: 100%;
+	font-size: 30px;
+	margin-bottom: 15px;
+}
+.message_to {
+	padding: 30px;
+	padding-left: 50px;
+	padding-right: 50px;
+	display: inline-block;
+	font-size: 30px;
+	color: #FFFFFF;
+	border:  0;
+	height: 20%;
+	background: #F91D45;
+	border-radius: 15px;
+	font-family: 'Montserrat', sans-serif;
+}
+.desc_button_page {
+	float: left;
+	display: inline-block;
+	width: 35%;
+	text-align: center;
+	padding-top: 6%;
+	padding-left: 70px;
+}

@@ -14,7 +14,6 @@ def index(request):
 
 def main(request):
     accounts = UserAccount.objects.all()
-    # skills = Skills.objects.all()
     return render(request, 'main.html', {'accounts': accounts,})
 
 def registration(request):
@@ -62,3 +61,6 @@ def authorisation(request):
         return render(request, 'authorisation.html', {'form': form,
             'errors': errors})
 
+def page(request):
+    accounts = UserAccount.objects.all()
+    return render(request, 'page.html', {'accounts': accounts,})

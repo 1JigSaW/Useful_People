@@ -15,15 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from people.views import index, authorisation, registration, main
+from people.views import index, authorisation, registration, main, page
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', index),
-    path('registration/', registration),
-    path('authorisation/', authorisation), 
+    path('index/', index, name='index'),
+    path('registration/', registration, name='registration'),
+    path('authorisation/', authorisation, name='authorisation'), 
     path('', main, name='main'), 
+    path('page', page, name='page'), 
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
 
