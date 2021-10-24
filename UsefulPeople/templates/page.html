@@ -59,6 +59,23 @@
 					</div>
 				</div>
 			{% endfor %}
+			<div><h2 class="page_title">Достижения:</h2></div>
+			{% for achievements in account.achievements.all %}
+				<div class="page_block_info">
+					<div class="desc_acc_page_add">
+						<h1 class="page_upperblock_add">{{ achievements.topic }}</h1>
+						<h2 class="page_lowerblock_add">{{ achievements.description }}</h2>
+					</div>
+				</div>
+			{% endfor %}
+			<div><h2 class="page_title">О себе:</h2></div>
+			{% for account in accounts %}
+				<div class="page_block_info">
+					<div class="desc_acc_page_add">
+						<h2 class="page_lowerblock_add">{{ account.additional_information }}</h2>
+					</div>
+				</div>
+			{% endfor %}
 		</div>
 		{% endfor %}
 	</div>
