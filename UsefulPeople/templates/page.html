@@ -18,7 +18,7 @@
 <section id="about" class="about">
 	<div class="container">
 		<div class="page_all_block">
-			<img class="ph_acc_page" src={{ account.photo }}>
+			<img class="ph_acc_page" src={{ account.photo.url }}>
 			<div class="desc_acc_page">
 				<h1 class="page_name">{{ account.first_name }} {{ account.last_name }}</h1>
 				<h2 class="page_profession">{{ account.profession }}</h2>
@@ -39,7 +39,7 @@
 			<div><h2 class="page_title">Опыт работы:</h2></div>
 			{% for experience in account.experience.all %}
 				<div class="page_block_info">
-					<img class="ph_expirience_page" src={{ experience.photo_work }}>
+					<img class="ph_expirience_page" src={{ experience.photo_work.url }}>
 					<div class="desc_acc_page">
 						<h1 class="page_upperblock">{{ experience.company_name }}</h1>
 						<h2 class="page_lowerblock">{{ experience.position }}</h2>
@@ -50,7 +50,7 @@
 			<div><h2 class="page_title">Дополнительное образование:</h2></div>
 			{% for education in account.additional_education.all %}
 				<div class="page_block_info">
-					<img class="ph_expirience_page" src={{ education.photo_education }}>
+					<img class="ph_expirience_page" src={{ education.photo_education.url }}>
 					<div class="desc_acc_page">
 						<h1 class="page_upperblock">{{ education.university_name }}</h1>
 						<h2 class="page_lowerblock">{{ education.direction }}</h2>

@@ -18,10 +18,13 @@
 <section id="about" class="about">
 	<div class="container">
 		<div class="searching_menu">
-			<input type="text" class="search_line">
-			<button class="search_button">Search</button>
+			<form action="{% url 'search' %}" method="GET" class="search_line_form">
+				<input type="text" class="search_line" name="q">
+				<button class="search_button" type="submit">Search</button>
+			</form>
 		</div>
 		<div class="desc-left-main">
+			{{ accounts.first_name }}
 			{% if accounts.count > 0 %}
 				{% for account in accounts %}
 				<a style="display:block" href="{% url 'page' account.id%}">

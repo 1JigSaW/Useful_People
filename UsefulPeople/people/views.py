@@ -64,3 +64,16 @@ def authorisation(request):
 def page(request, id):
     account = UserAccount.objects.get(pk=id)
     return render(request, 'page.html', {'account': account,})
+
+def search(request):
+    if 'q' in request.GET and request.GET['q']:
+        query = request.GET['q']
+        try:
+            accounts = UserAccount.objects.get(first_name__contains=query)
+            context = { 'accounts': accounts }
+            print(accounts)
+        except Comment.DoesNotExist:
+            accounts = UserAccount.objects.all()
+            comment = 'Ничего не найдено'
+            context = { 'accounts': accounts, 'comment': comment }
+    return render(request, 'main.html', context)
