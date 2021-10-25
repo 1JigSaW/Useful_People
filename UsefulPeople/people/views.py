@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import UserAccount, Skills, Experience, Education, Achievements
+from django.db.models import Q
 from django.urls import reverse
 
 def index(request):
@@ -66,14 +67,23 @@ def page(request, id):
     return render(request, 'page.html', {'account': account,})
 
 def search(request):
+    comment = ''
     if 'q' in request.GET and request.GET['q']:
         query = request.GET['q']
         try:
-            accounts = UserAccount.objects.get(first_name__contains=query)
+            accounts = UserAccount.objects.filter(
+                Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(profession__icontains=query) | Q(country__icontains=query) | Q(city__icontains=query) | Q(university__icontains=query) | Q(skills__icontains=query) | Q(experience__icontains=query) | Q(additional_education__icontains=query) | Q(achievements__icontains=query) | Q(additional_information__icontains=query)
+            )
+            print(accounts)
             context = { 'accounts': accounts }
             print(accounts)
-        except Comment.DoesNotExist:
+        except :
             accounts = UserAccount.objects.all()
             comment = 'Ничего не найдено'
             context = { 'accounts': accounts, 'comment': comment }
-    return render(request, 'main.html', context)
+        return render(request, 'main.html', context)
+    else:
+        accounts = UserAccount.objects.all()
+        comment = 'Повторите запрос'
+        context = { 'accounts': accounts, 'comment': comment }
+        return render(request, 'main.html', context)

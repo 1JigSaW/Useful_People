@@ -24,7 +24,9 @@
 			</form>
 		</div>
 		<div class="desc-left-main">
-			{{ accounts.first_name }}
+			{% if comment %}
+				<h2 class="error_search">{{ comment }}</h2>
+			{% endif %}
 			{% if accounts.count > 0 %}
 				{% for account in accounts %}
 				<a style="display:block" href="{% url 'page' account.id%}">
