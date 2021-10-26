@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from people import views
 from people.views import index, authorisation, registration, main, page, search
-from people.views import chats, user_logout
+from people.views import chats, user_logout, account
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
@@ -28,7 +28,8 @@ urlpatterns = [
     path('registration/', registration, name='registration'),
     path('authorisation/', authorisation, name='authorisation'),
     path('logout/', user_logout, name='user_logout'),
-    path('', main, name='main'), 
+    path('', main, name='main'),
+    path('account/', account, name='account'),
     path('<id>/', page, name='page'),
     path('search', search, name='search'),
     path('chats', chats, name='chats'),

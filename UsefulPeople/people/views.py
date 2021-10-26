@@ -71,10 +71,12 @@ def user_logout(request):
     logout(request)
     return redirect('index')
 
+@login_required
 def page(request, id):
     account = UserAccount.objects.get(pk=id)
     return render(request, 'page.html', {'account': account,})
 
+@login_required
 def search(request):
     comment = ''
     if 'q' in request.GET and request.GET['q']:
@@ -97,10 +99,17 @@ def search(request):
         context = { 'accounts': accounts, 'comment': comment }
         return render(request, 'main.html', context)
 
+@login_required
 def chats(request):
     chats = Chat.objects.filter(members__in=[request.user.id])
     return render(request, 'chats.html', {'user_profile': request.user, 
         'chats': chats})
+
+@login_required
+def account(request):
+    info = request.user 
+    print(info)
+    return render(request, 'account.html', {'info': info})
 
 class MessagesView(View):
     def get(self, request, chat_id):
