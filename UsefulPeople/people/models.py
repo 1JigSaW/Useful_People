@@ -66,10 +66,10 @@ class Achievements(models.Model):
 		verbose_name = 'Достижение'
 		verbose_name_plural = 'Достижения'
 
-class UserAccount(models.Model):
+class UserAccount(User):
 	# user_id = models.ForeignKey(User, on_delete=models.CASCADE,)
-	first_name = models.CharField(max_length=50, blank=False)
-	last_name = models.CharField(max_length=50, blank=False)
+	#first_name = models.CharField(max_length=50, blank=False)
+	#last_name = models.CharField(max_length=50, blank=False)
 	profession = models.CharField(max_length=100)
 	country = models.CharField(max_length=40)
 	city = models.CharField(max_length=40)
