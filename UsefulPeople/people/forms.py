@@ -3,6 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from django.forms import ModelForm
+from people.models import Message
 
 class UsersForm(AuthenticationForm):
 
@@ -50,3 +52,9 @@ class UsersRegistrationForm(UserCreationForm):
         if cd['password1'] != cd['password2']:
             raise forms.ValidationError('Пароли не совпадают')
         return cd['password2']
+
+class MessageForm(ModelForm):
+    class Meta:
+        model = Message
+        fields = ['message']
+        labels = {'message': ""}

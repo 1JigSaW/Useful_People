@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from people import views
 from people.views import index, authorisation, registration, main, page, search
+from people.views import chats
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
@@ -28,4 +30,7 @@ urlpatterns = [
     path('', main, name='main'), 
     path('<id>/', page, name='page'),
     path('search', search, name='search'),
+    path('chats', chats, name='chats'),
+    path('chats/create/<user_id>', views.CreateDialogView.as_view(), name='chat_create'),
+    path('chats/<chat_id>', views.MessagesView.as_view(), name='messages'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

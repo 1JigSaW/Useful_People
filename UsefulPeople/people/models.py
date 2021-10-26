@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # class Users(models.Model):
 # 	login = models.CharField(max_length=50, blank=False)
 # 	email = models.CharField(max_length=50, blank=False)
@@ -87,3 +88,36 @@ class UserAccount(models.Model):
 		verbose_name = 'Аккаунт'
 		verbose_name_plural = 'Аккаунты'
 
+class Chat(models.Model):
+	DIALOG = 'D'
+	CHAT = 'C'
+	CHAT_TYPE_CHOICES = (
+		(DIALOG, ('Dialog')),
+		(CHAT, ('Chat'))
+	)
+	type_c = models.CharField(max_length=1, 
+		choices=CHAT_TYPE_CHOICES, default=DIALOG)
+	members = models.ManyToManyField(UserAccount)
+
+	class Meta:
+		verbose_name = 'Чат'
+		verbose_name_plural = 'Чаты'
+
+	def __str__(self):
+		return f'{self.type_c}'
+
+
+class Message(models.Model):
+	chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
+	author = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+	message = models.TextField()
+	pub_date = models.DateTimeField(default=timezone.now)
+	is_readed = models.BooleanField(default=False)
+
+	class Meta:
+		verbose_name = 'Сообщение'
+		verbose_name_plural = 'Сообщения'
+		ordering=['pub_date']
+
+	def __str__(self):
+		return f'{self.message}'
