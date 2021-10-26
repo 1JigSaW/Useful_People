@@ -5,18 +5,6 @@
 {% block title %}Chats{% endblock %}
 
 {% block content %}
-<header id="header" class="header">
-	<div class="container">
-		<div class="nav">
-			<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo_main">
-			<div class="head_main_menu">
-				<a href="/chat/" class="chat"><img src="{% static 'img/chat.svg' %}" alt="chat"></a>
-				<a href="/account/" class="account"><img src="{% static 'img/account.svg' %}" alt="account"></a>
-				<a href="/logout/" class="logout"><img src="{% static 'img/logout.svg' %}" alt="logout"></a>
-			</div>
-		</div>
-	</div>
-</header>
 <div class="panel">
     {% if chats.count == 0 %}
         <div class="panel panel-body">{{ "Нет ни одного начатого диалога" }}</div>

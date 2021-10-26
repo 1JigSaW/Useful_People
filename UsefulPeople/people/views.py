@@ -8,12 +8,15 @@ from .models import UserAccount, Skills, Experience, Education, Achievements, Ch
 from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import View
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def index(request):
     if request.user.is_authenticated:
         return redirect('main')
     return render(request, 'index.html')
 
+@login_required
 def main(request):
     accounts = UserAccount.objects.all()
     return render(request, 'main.html', {'accounts': accounts,})
@@ -62,6 +65,11 @@ def authorisation(request):
         form = UsersForm()
         return render(request, 'authorisation.html', {'form': form,
             'errors': errors})
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('index')
 
 def page(request, id):
     account = UserAccount.objects.get(pk=id)

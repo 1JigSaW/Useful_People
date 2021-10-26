@@ -24,9 +24,8 @@
 		<div class="nav">
 			<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo_main">
 			<div class="head_main_menu">
-				<a href="/chat/" class="chat"><img src="{% static 'img/chat.svg' %}" alt="chat"></a>
-				<a href="/account/" class="account"><img src="{% static 'img/account.svg' %}" alt="account"></a>
-				<a href="{% url 'user_logout' %}" class="logout"><img src="{% static 'img/logout.svg' %}" alt="logout"></a>
+				<a href="{% url 'authorisation' %}"><div class="signin">Войти</div></a>
+				<a href="{% url 'registration' %}"><div class="signup">Зарегестрироваться</div></a>
 			</div>
 		</div>
 	</div>
