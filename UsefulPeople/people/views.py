@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UsersForm, UsersRegistrationForm, MessageForm
+from .forms import UsersForm, UsersRegistrationForm, MessageForm, ResumeForm
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
@@ -107,9 +107,43 @@ def chats(request):
 
 @login_required
 def account(request):
-    info = request.user 
-    print(info)
-    return render(request, 'account.html', {'info': info})
+    comment = ''
+    info = request.user
+    if request.method == 'POST':
+        form_resume = ResumeForm(request.POST)
+        if user_form.is_valid():
+            form = form_resume.save()
+            comment = 'Вы успешно разместили резюме'
+            return render(request, 'account.html', 
+                {
+                    'form': form,
+                    'info': info,
+                    'comment': comment,
+                }
+            )
+        else:
+            form = ResumeForm()
+            comment = 'Некорректные данные'
+            return render(request, 'account.html', 
+                {
+                    'form': form,
+                    'info': info,
+                    'comment': comment,
+                }
+            )
+    else:
+        form = ResumeForm()
+        return render(request, 'account.html', 
+            {
+                'form': form,
+                'info': info,
+            }
+        )
+
+
+@login_required
+def create_resume(request):
+    return render(request, 'create_resume.html')
 
 class MessagesView(View):
     def get(self, request, chat_id):
@@ -151,3 +185,5 @@ class CreateDialogView(View):
         else:
             chat = chats.first()
         return redirect(reverse('users:messages', kwargs={'chat_id': chat.id}))
+
+

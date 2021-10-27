@@ -4,12 +4,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ModelForm
-from people.models import Message
+from people.models import Message, UserAccount
 
 class UsersForm(AuthenticationForm):
 
     class Meta:
-        model = User
+        model = UserAccount
         fields = ('username', 'password',)
         labels = {
             'username': _('Логин'),
@@ -29,7 +29,7 @@ class UsersRegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
     class Meta:
-        model = User
+        model = UserAccount
         fields = ('username', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
@@ -58,3 +58,48 @@ class MessageForm(ModelForm):
         model = Message
         fields = ['message']
         labels = {'message': ""}
+
+class ResumeForm(ModelForm):
+
+    class Meta:
+        model = UserAccount
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ResumeForm, self).__init__(*args, **kwargs)
+        self.fields['photo'].widget = forms.FileInput(attrs={
+            'class': 'input_log',
+            })
+        self.fields['first_name'].widget = forms.TextInput(attrs={
+            'class': 'input_log',
+            })
+        self.fields['last_name'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['profession'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['country'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['city'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['university'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['skills'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['experience'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['additional_education'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['achievements'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['additional_information'].widget = forms.Textarea(attrs={
+            'class': 'input_passwd',
+            })

@@ -5,8 +5,78 @@
 {% block content %}
 <section id="about" class="about">
 	<div class="container">
-		<h2 class="">Логин: {{ info.username }}</h2>
-		<h2 class="">Email: {{ info.email }}</h2>
+		<h1 class="page_title">Информация об аккаунте:</h1>
+		<div class="resume_block_info">
+			<h2 class="page_title">Логин: {{ info.username }}</h2>
+			<h2 class="page_title">Email: {{ info.email }}</h2>
+		</div>
+		<input id='resume_button' type="button" value="Создать резюме" class="create_resume_but" onclick="disp(document.getElementById('resume'))"/>
+		<div id="resume" class="resume_hidden">
+			{% if user_form.errors %}
+	   			{% for field in user_form %}
+	      			{% for error in field.errors %}
+	          			<h3 class="errors_password">{{ error|escape }}</h3>
+	      			{% endfor %}
+	   			{% endfor %}
+			{% endif %}
+			<h1 class="page_title">Профиль:</h1>
+			<div class="resume_block">
+				<form method="POST" class="resume_form">{% csrf_token %}
+					{% for message in messages %}
+						<p>{{message}}</p>
+					{% endfor %}
+					<div class="label_reg_log">
+						<label>Фото</label>
+					</div>
+					{{ form.photo }}
+					<div class="label_reg_log">
+						<label for="registratiom">Имя</label>
+					</div>
+					{{ form.first_name }}
+					<div class="label_reg_email">
+						<label for="registratiom">Фамилия</label>
+					</div>
+					{{ form.last_name }}
+					<div class="label_reg_password">
+						<label for="registratiom">Профессия</label>
+					</div>
+					{{ form.profession }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Страна</label>
+					</div>
+					{{ form.country }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Город</label>
+					</div>
+					{{ form.city }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Учебное<br>заведение</label>
+					</div>
+					{{ form.university }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Навыки</label>
+					</div>
+					{{ form.skills }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Опыт<br>работ</label>
+					</div>
+					{{ form.experience }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Дополнительное образование</label>
+					</div>
+					{{ form.additional_education }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Достижения</label>
+					</div>
+					{{ form.achievements }}
+					<div class="label_reg_password2">
+						<label for="registratiom">Дополнительная информация</label>
+					</div>
+					{{ form.additional_information }}
+					<button type="submit" class="auth_button">Сохранить</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </section>
 {% endblock %}

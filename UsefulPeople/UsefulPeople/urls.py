@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from people import views
 from people.views import index, authorisation, registration, main, page, search
-from people.views import chats, user_logout, account
+from people.views import chats, user_logout, account, create_resume
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
@@ -32,6 +32,7 @@ urlpatterns = [
     path('account/', account, name='account'),
     path('<id>/', page, name='page'),
     path('search', search, name='search'),
+    path('account/create_resume', create_resume, name='create_resume'),
     path('chats', chats, name='chats'),
     path('chats/create/<user_id>', views.CreateDialogView.as_view(), name='chat_create'),
     path('chats/<chat_id>', views.MessagesView.as_view(), name='messages'),

@@ -17,12 +17,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 	<title>{% block title %}{% endblock %}</title>
 </head>
 <header id="header" class="header">
 	<div class="container">
 		<div class="nav">
-			<img src="{% static 'img/logo.svg' %}" alt="UsefulPeople" class="logo_main">
+			<a href="{% url 'main' %}" class="logo_main"><img src="{% static 'img/logo.svg' %}" alt="UsefulPeople"></a>
 			<div class="head_main_menu">
 				<a href="/chat/" class="chat"><img src="{% static 'img/chat.svg' %}" alt="chat"></a>
 				<a href="{% url 'account' %}" class="account"><img src="{% static 'img/account.svg' %}" alt="account"></a>
