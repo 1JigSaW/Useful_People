@@ -599,11 +599,9 @@ body {
 	display: block;
 	position: absolute;
 	float: left;
-	height: 100%;
+	
 	background: #46FFFF;
 	border: 2.7px solid;
-    margin-right: -50%;
-    border-radius: 15px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 	margin: 5px;
@@ -612,6 +610,7 @@ body {
 	width: 69.5%;
 	border-radius: 15px;
 	border: 2.7px solid;
+	margin-bottom: 15px;
 }
 .resume_block_info {
 	float: left;
@@ -628,4 +627,130 @@ body {
 /*asdasdsadsadasdsad*/
 .resume_hidden {
 	display: block;
+}
+.form_resume_photo {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 20px;
+	margin-right: 110px;
+}
+.form_resume_name {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 25px;
+	margin-right: 110px;
+}
+.form_resume_name_2 {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 27px;
+	margin-right: 50px;
+}
+.form_resume_profesion {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 27px;
+	margin-right: 50px;
+}
+.form_resume_country {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 25px;
+	margin-right: 50px;
+}
+.form_resume_city {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 25px;
+	margin-right: 50px;
+}
+.form_resume_university {
+	float: left;
+	font-size: 20px;
+	padding-top: 17px;
+	margin-left: 15px;
+	text-align: left;
+}
+.form_resume_skills{
+	float: left;
+	font-size: 30px;
+	margin-top: 22px;
+	margin-right: 20px;
+	text-align: left;
+	margin-left: 15px;
+}
+.form_resume_exp{
+	float: left;
+	font-size: 30px;
+	margin-top: 25px;
+	margin-right: 20px;
+	text-align: left;
+	margin-left: 15px;
+}
+.form_resume_university {
+	float: left;
+	font-size: 20px;
+	padding-top: 12px;
+	margin-left: 15px;
+	text-align: left;
+}
+.form_resume_achiv{
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 25px;
+	margin-right: 10px;
+}
+.form_resume_addinfo {
+	float: left;
+	font-size: 20px;
+	padding-top: 17px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 10px;
+}
+.resume_button {
+	font-size: 30px;
+	width: 95%;
+	height: 45px;
+	border: 0;
+	border-radius: 15px;
+	color: #ffffff;
+	background: #F91D45;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.input_skill {
+	margin-right: 10%;
+	float: right;
+	font-size: 40px;
+	width: 70%;
+	border-radius: 15px;
+	border: 2.5px solid;
+	margin-top: 10px;
+}
+.input_addinfo {
+	margin-right: 10%;
+	float: right;
+	font-size: 30px;
+	width: 70%;
+	height: 10%;
+	border-radius: 15px;
+	border: 2.5px solid;
+	margin-top: 10px;
+}
+.input_photo {
+	margin-right: 10%;
+	float: right;
+	font-size: 40px;
+	width: 70%;
+	margin-top: 10px;
+
 }

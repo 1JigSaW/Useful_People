@@ -68,7 +68,7 @@ class ResumeForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(ResumeForm, self).__init__(*args, **kwargs)
         self.fields['photo'].widget = forms.FileInput(attrs={
-            'class': 'input_log',
+            'class': 'input_photo',
             })
         self.fields['first_name'].widget = forms.TextInput(attrs={
             'class': 'input_log',
@@ -89,7 +89,7 @@ class ResumeForm(ModelForm):
             'class': 'input_passwd',
             })
         self.fields['skills'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
+            'class': 'input_skill',
             })
         self.fields['experience'].widget = forms.TextInput(attrs={
             'class': 'input_passwd',
@@ -101,5 +101,5 @@ class ResumeForm(ModelForm):
             'class': 'input_passwd',
             })
         self.fields['additional_information'].widget = forms.Textarea(attrs={
-            'class': 'input_passwd',
+            'class': 'input_addinfo',
             })
