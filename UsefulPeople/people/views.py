@@ -18,7 +18,7 @@ def index(request):
 
 @login_required
 def main(request):
-    accounts = UserAccount.objects.all()
+    accounts = UserAccount.objects.filter(keyword_icontains='first_name')
     return render(request, 'main.html', {'accounts': accounts,})
 
 def registration(request):
@@ -111,7 +111,12 @@ def account(request):
     info = request.user
     if request.method == 'POST':
         form_resume = ResumeForm(request.POST)
-        if user_form.is_valid():
+        form_resume.username = request.user.username
+        form_resume.email = request.user.email
+        form_resume.password = 'sdfsfdfsdf354dcvg4325'
+        print(request.user.email)
+        form_resume.save()
+        if form_resume.is_valid():
             form = form_resume.save()
             comment = 'Вы успешно разместили резюме'
             return render(request, 'account.html', 
@@ -121,16 +126,16 @@ def account(request):
                     'comment': comment,
                 }
             )
-        else:
-            form = ResumeForm()
-            comment = 'Некорректные данные'
-            return render(request, 'account.html', 
-                {
-                    'form': form,
-                    'info': info,
-                    'comment': comment,
-                }
-            )
+        # else:
+        #     form = ResumeForm()
+        #     comment = 'Некорректные данные'
+        #     return render(request, 'account.html', 
+        #         {
+        #             'form': form,
+        #             'info': info,
+        #             'comment': comment,
+        #         }
+        #     )
     else:
         form = ResumeForm()
         return render(request, 'account.html', 

@@ -3,6 +3,8 @@
 {% block title %}Main{% endblock %}
 
 {% block content %}
+{{ field.errors }}
+{{ form.as_p }}
 <section id="about" class="about">
 	<div class="container">
 		<h1 class="page_title">Информация об аккаунте:</h1>

@@ -88,18 +88,23 @@ class ResumeForm(ModelForm):
         self.fields['university'].widget = forms.TextInput(attrs={
             'class': 'input_passwd',
             })
-        self.fields['skills'].widget = forms.TextInput(attrs={
-            'class': 'input_skill',
-            })
-        self.fields['experience'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['additional_education'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['achievements'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
+        # self.fields['skills'].widget = forms.TextInput(attrs={
+        #     'class': 'input_skill',
+        #     })
+        # self.fields['experience'].widget = forms.TextInput(attrs={
+        #     'class': 'input_passwd',
+        #     })
+        # self.fields['additional_education'].widget = forms.TextInput(attrs={
+        #     'class': 'input_passwd',
+        #     })
+        # self.fields['achievements'].widget = forms.TextInput(attrs={
+        #     'class': 'input_passwd',
+        #     })
         self.fields['additional_information'].widget = forms.Textarea(attrs={
             'class': 'input_addinfo',
             })
+
+    # def save(self, commit=True):
+    #     old_save_m2m = self.save_m2m
+    #     def save_m2m():
+    #         old_save_m2m()
