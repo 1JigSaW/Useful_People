@@ -70,10 +70,10 @@ class ResumeForm(ModelForm):
         self.fields['photo'].widget = forms.FileInput(attrs={
             'class': 'input_photo',
             })
-        self.fields['first_name'].widget = forms.TextInput(attrs={
+        self.fields['first_name_u'].widget = forms.TextInput(attrs={
             'class': 'input_log',
             })
-        self.fields['last_name'].widget = forms.TextInput(attrs={
+        self.fields['last_name_u'].widget = forms.TextInput(attrs={
             'class': 'input_passwd',
             })
         self.fields['profession'].widget = forms.TextInput(attrs={
@@ -88,18 +88,18 @@ class ResumeForm(ModelForm):
         self.fields['university'].widget = forms.TextInput(attrs={
             'class': 'input_passwd',
             })
-        # self.fields['skills'].widget = forms.TextInput(attrs={
-        #     'class': 'input_skill',
-        #     })
-        # self.fields['experience'].widget = forms.TextInput(attrs={
-        #     'class': 'input_passwd',
-        #     })
-        # self.fields['additional_education'].widget = forms.TextInput(attrs={
-        #     'class': 'input_passwd',
-        #     })
-        # self.fields['achievements'].widget = forms.TextInput(attrs={
-        #     'class': 'input_passwd',
-        #     })
+        self.fields['skills'].widget = forms.TextInput(attrs={
+            'class': 'input_skill',
+            })
+        self.fields['experience'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['additional_education'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['achievements'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
         self.fields['additional_information'].widget = forms.Textarea(attrs={
             'class': 'input_addinfo',
             })

@@ -107,43 +107,51 @@ def chats(request):
 
 @login_required
 def account(request):
-    comment = ''
+    form = ResumeForm()
     info = request.user
-    if request.method == 'POST':
-        form_resume = ResumeForm(request.POST)
-        form_resume.username = request.user.username
-        form_resume.email = request.user.email
-        form_resume.password = 'sdfsfdfsdf354dcvg4325'
-        print(request.user.email)
-        form_resume.save()
-        if form_resume.is_valid():
-            form = form_resume.save()
-            comment = 'Вы успешно разместили резюме'
-            return render(request, 'account.html', 
-                {
-                    'form': form,
-                    'info': info,
-                    'comment': comment,
-                }
-            )
-        # else:
-        #     form = ResumeForm()
-        #     comment = 'Некорректные данные'
-        #     return render(request, 'account.html', 
-        #         {
-        #             'form': form,
-        #             'info': info,
-        #             'comment': comment,
-        #         }
-        #     )
-    else:
-        form = ResumeForm()
-        return render(request, 'account.html', 
-            {
-                'form': form,
-                'info': info,
-            }
-        )
+    return render(request, 'account.html', 
+        {
+            'form': form,
+            'info': info,
+        }
+    )
+    # comment = ''
+    # info = request.user
+    # if request.method == 'POST':
+    #     form_resume = ResumeForm(request.POST)
+    #     form_resume.username = request.user.username
+    #     form_resume.email = request.user.email
+    #     form_resume.password = 'sdfsfdfsdf354dcvg4325'
+    #     print(request.user.email)
+    #     form_resume.save()
+    #     if form_resume.is_valid():
+    #         form = form_resume.save()
+    #         comment = 'Вы успешно разместили резюме'
+    #         return render(request, 'account.html', 
+    #             {
+    #                 'form': form,
+    #                 'info': info,
+    #                 'comment': comment,
+    #             }
+    #         )
+    #     # else:
+    #     #     form = ResumeForm()
+    #     #     comment = 'Некорректные данные'
+    #     #     return render(request, 'account.html', 
+    #     #         {
+    #     #             'form': form,
+    #     #             'info': info,
+    #     #             'comment': comment,
+    #     #         }
+    #     #     )
+    # else:
+    #     form = ResumeForm()
+    #     return render(request, 'account.html', 
+    #         {
+    #             'form': form,
+    #             'info': info,
+    #         }
+    #     )
 
 
 @login_required

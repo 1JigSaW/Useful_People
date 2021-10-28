@@ -69,8 +69,8 @@ class Achievements(models.Model):
 
 class UserAccount(models.Model):
 	# user_id = models.ForeignKey(User, on_delete=models.CASCADE,)
-	#first_name = models.CharField(max_length=50, blank=False)
-	#last_name = models.CharField(max_length=50, blank=False)
+	first_name_u = models.CharField(max_length=50, blank=False)
+	last_name_u = models.CharField(max_length=50, blank=False)
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	profession = models.CharField(max_length=100)
 	country = models.CharField(max_length=40)
@@ -84,20 +84,11 @@ class UserAccount(models.Model):
 	additional_information = models.TextField()
 
 	def __str__(self):
-		return f'{self.first_name}, {self.last_name}'
+		return f'{self.first_name_u}, {self.last_name_u}'
 
 	class Meta:
 		verbose_name = 'Аккаунт'
 		verbose_name_plural = 'Аккаунты'
-
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         UserAccount.objects.create(user=instance)
-
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
 
 class Chat(models.Model):
 	DIALOG = 'D'
