@@ -19,7 +19,8 @@ class Experience(models.Model):
 	position = models.CharField(max_length=100)
 	years_of_work = models.IntegerField()
 	mounth_of_work = models.IntegerField()
-	photo_work = models.ImageField(upload_to='static/photo_works')
+	photo_work = models.ImageField(upload_to='static/photo_works', 
+		blank=True, null=True)
 
 	def __str__(self):
 		return f"{self.company_name}"
@@ -35,7 +36,7 @@ class Education(models.Model):
 	start_training = models.DateField()
 	end_training = models.DateField()
 	photo_education = models.ImageField(
-		upload_to='static/photo_education'
+		upload_to='static/photo_education', blank=True, null=True
 	)
 
 	def __str__(self):
@@ -65,10 +66,10 @@ class UserAccount(models.Model):
 	city = models.CharField(max_length=40)
 	university = models.CharField(max_length=100)
 	photo = models.ImageField(upload_to='static/photos')
-	skills = models.ManyToManyField(Skills)
-	experience = models.ManyToManyField(Experience)
-	additional_education = models.ManyToManyField(Education)
-	achievements = models.ManyToManyField(Achievements)
+	skills = models.ManyToManyField(Skills, blank=True)
+	experience = models.ManyToManyField(Experience, blank=True)
+	additional_education = models.ManyToManyField(Education,blank=True)
+	achievements = models.ManyToManyField(Achievements, blank=True)
 	additional_information = models.TextField()
 
 	def __str__(self):
@@ -81,11 +82,11 @@ class UserAccount(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        UserAccount.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+    instance.useraccount.save()
 
 class Chat(models.Model):
 	DIALOG = 'D'

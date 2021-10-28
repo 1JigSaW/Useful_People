@@ -3,8 +3,8 @@
 {% block title %}Main{% endblock %}
 
 {% block content %}
-{{ field.errors }}
-{{ form.as_p }}
+<!-- {{ field.errors }} -->
+<!-- {{ form.as_p }} -->
 <section id="about" class="about">
 	<div class="container">
 		<h1 class="page_title">Информация об аккаунте:</h1>
@@ -12,10 +12,10 @@
 			<h2 class="page_title">Логин: {{ info.username }}</h2>
 			<h2 class="page_title">Email: {{ info.email }}</h2>
 		</div>
-		<!-- <input id='resume_button' type="button" value="Создать резюме" class="create_resume_but" onclick="disp(document.getElementById('resume'))"/>
+		<input id='resume_button' type="button" value="Создать резюме" class="create_resume_but" onclick="disp(document.getElementById('resume'))"/>
 		<div id="resume" class="resume_hidden">
-			{% if user_form.errors %}
-	   			{% for field in user_form %}
+			{% if form.errors %}
+	   			{% for field in form %}
 	      			{% for error in field.errors %}
 	          			<h3 class="errors_password">{{ error|escape }}</h3>
 	      			{% endfor %}
@@ -23,8 +23,23 @@
 			{% endif %}
 			<h1 class="page_title">Профиль:</h1>
 			<div class="resume_block">
-				<form method="POST" class="resume_form">{% csrf_token %}
-					{% for message in messages %}
+				<form method="POST" enctype="multipart/form-data" class="resume_form">{% csrf_token %}
+					{% for field in form %}
+						<li>{{ field }}</li>
+					{% endfor %}
+					{% for i in form2 %}
+						<li>{{ i }}</li>
+					{% endfor %}
+					{% for j in form3 %}
+						<li>{{ j }}</li>
+					{% endfor %}
+					{% for k in form4 %}
+						<li>{{ k }}</li>
+					{% endfor %}
+					{% for l in form5 %}
+						<li>{{ l }}</li>
+					{% endfor %}
+					<!-- {% for message in messages %}
 						<p>{{message}}</p>
 					{% endfor %}
 					<div class="form_resume_photo">
@@ -34,11 +49,11 @@
 					<div class="form_resume_name">
 						<label>Имя</label>
 					</div>
-					{{ form.first_name }}
+					{{ form.first_name_u }}
 					<div class="form_resume_name_2">
 						<label>Фамилия</label>
 					</div>
-					{{ form.last_name }}
+					{{ form.last_name_u }}
 					<div class="form_resume_profesion">
 						<label>Профессия</label>
 					</div>
@@ -75,12 +90,12 @@
 						<label>Доп.<br>информация</label>
 					</div>
 					{{ form.additional_information }}
-					<div>
+					<div> -->
 						<button type="submit" class="resume_button">Сохранить</button>
 					</div>
 				</form>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </section>
 {% endblock %}

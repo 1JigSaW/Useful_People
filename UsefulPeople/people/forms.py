@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ModelForm
-from people.models import Message, UserAccount
+from people.models import Message, UserAccount, Skills, Experience, Education, Achievements
 
 class UsersForm(AuthenticationForm):
 
@@ -63,48 +63,75 @@ class ResumeForm(ModelForm):
 
     class Meta:
         model = UserAccount
-        fields = '__all__'
+        fields = ['first_name_u', 'last_name_u', 'profession', 
+            'country', 'city', 'university', 'photo', 
+            'additional_information',
+        ]
 
-    def __init__(self, *args, **kwargs):
-        super(ResumeForm, self).__init__(*args, **kwargs)
-        self.fields['photo'].widget = forms.FileInput(attrs={
-            'class': 'input_photo',
-            })
-        self.fields['first_name_u'].widget = forms.TextInput(attrs={
-            'class': 'input_log',
-            })
-        self.fields['last_name_u'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['profession'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['country'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['city'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['university'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['skills'].widget = forms.TextInput(attrs={
-            'class': 'input_skill',
-            })
-        self.fields['experience'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['additional_education'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['achievements'].widget = forms.TextInput(attrs={
-            'class': 'input_passwd',
-            })
-        self.fields['additional_information'].widget = forms.Textarea(attrs={
-            'class': 'input_addinfo',
-            })
+    # def __init__(self, *args, **kwargs):
+    #     super(ResumeForm, self).__init__(*args, **kwargs)
+    #     self.fields['photo'].widget = forms.FileInput(attrs={
+    #         'class': 'input_photo',
+    #         })
+    #     self.fields['first_name_u'].widget = forms.TextInput(attrs={
+    #         'class': 'input_log',
+    #         })
+    #     self.fields['last_name_u'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['profession'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['country'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['city'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['university'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['skills'].widget = forms.TextInput(attrs={
+    #         'class': 'input_skill',
+    #         })
+    #     self.fields['experience'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['additional_education'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['achievements'].widget = forms.TextInput(attrs={
+    #         'class': 'input_passwd',
+    #         })
+    #     self.fields['additional_information'].widget = forms.Textarea(attrs={
+    #         'class': 'input_addinfo',
+    #         })
 
     # def save(self, commit=True):
     #     old_save_m2m = self.save_m2m
     #     def save_m2m():
     #         old_save_m2m()
+
+class SkillsForm(ModelForm):
+
+    class Meta:
+        model = Skills
+        fields = '__all__'
+
+class ExperienceForm(ModelForm):
+
+    class Meta:
+        model = Experience
+        fields = '__all__'
+
+class EducationForm(ModelForm):
+
+    class Meta:
+        model = Education
+        fields = '__all__'
+
+class AchievementsForm(ModelForm):
+
+    class Meta:
+        model = Achievements
+        fields = '__all__'

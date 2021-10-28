@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UsersForm, UsersRegistrationForm, MessageForm, ResumeForm
+from .forms import UsersForm, UsersRegistrationForm, MessageForm, ResumeForm, SkillsForm
+from .forms import ExperienceForm, EducationForm, AchievementsForm
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
@@ -107,51 +108,60 @@ def chats(request):
 
 @login_required
 def account(request):
-    form = ResumeForm()
+    comment = ''
     info = request.user
-    return render(request, 'account.html', 
-        {
-            'form': form,
-            'info': info,
-        }
-    )
-    # comment = ''
-    # info = request.user
-    # if request.method == 'POST':
-    #     form_resume = ResumeForm(request.POST)
-    #     form_resume.username = request.user.username
-    #     form_resume.email = request.user.email
-    #     form_resume.password = 'sdfsfdfsdf354dcvg4325'
-    #     print(request.user.email)
-    #     form_resume.save()
-    #     if form_resume.is_valid():
-    #         form = form_resume.save()
-    #         comment = 'Вы успешно разместили резюме'
-    #         return render(request, 'account.html', 
-    #             {
-    #                 'form': form,
-    #                 'info': info,
-    #                 'comment': comment,
-    #             }
-    #         )
-    #     # else:
-    #     #     form = ResumeForm()
-    #     #     comment = 'Некорректные данные'
-    #     #     return render(request, 'account.html', 
-    #     #         {
-    #     #             'form': form,
-    #     #             'info': info,
-    #     #             'comment': comment,
-    #     #         }
-    #     #     )
-    # else:
-    #     form = ResumeForm()
-    #     return render(request, 'account.html', 
-    #         {
-    #             'form': form,
-    #             'info': info,
-    #         }
-    #     )
+    if request.method == 'POST':
+        form_resume = ResumeForm(request.POST, request.FILES, instance=request.user.useraccount)
+        form_resume.user = request.user.useraccount
+        form_skills = SkillsForm(request.POST)
+        form_exp = ExperienceForm(request.POST, request.FILES)
+        form_education = EducationForm(request.POST, request.FILES)
+        form_achievments = AchievementsForm(request.POST)
+        print(form_resume.errors)
+        print(form_skills.errors)
+        print(form_exp.errors)
+        print(form_education.errors)
+        print(form_achievments.errors)
+        if form_resume.is_valid() and form_skills.is_valid() and \
+            form_exp.is_valid() and form_education.is_valid() and \
+            form_achievments.is_valid():
+            form = form_resume.save()
+            form2 = form_skills.save()
+            form3 = form_exp.save()
+            form4 = form_education.save()
+            form5 = form_achievments.save()
+            form.skills.add(form2)
+            form.experience.add(form3)
+            form.additional_education.add(form4)
+            form.achievements.add(form5)
+            comment = 'Вы успешно разместили резюме'
+            return redirect('account')
+        # else:
+        #     form = ResumeForm()
+        #     comment = 'Некорректные данные'
+        #     return render(request, 'account.html', 
+        #         {
+        #             'form': form,
+        #             'info': info,
+        #             'comment': comment,
+        #         }
+        #     )
+    else:
+        form = ResumeForm()
+        form2 = SkillsForm()
+        form3 = ExperienceForm()
+        form4 = EducationForm()
+        form5 = AchievementsForm()
+        return render(request, 'account.html', 
+            {
+                'form': form,
+                'form2': form2,
+                'form3': form3,
+                'form4': form4,
+                'form5': form5,
+                'info': info,
+            }
+        )
 
 
 @login_required
