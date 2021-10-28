@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.utils import timezone
+from django.dispatch import receiver
 # class Users(models.Model):
 # 	login = models.CharField(max_length=50, blank=False)
 # 	email = models.CharField(max_length=50, blank=False)
@@ -66,10 +67,11 @@ class Achievements(models.Model):
 		verbose_name = 'Достижение'
 		verbose_name_plural = 'Достижения'
 
-class UserAccount(User):
+class UserAccount(models.Model):
 	# user_id = models.ForeignKey(User, on_delete=models.CASCADE,)
 	#first_name = models.CharField(max_length=50, blank=False)
 	#last_name = models.CharField(max_length=50, blank=False)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	profession = models.CharField(max_length=100)
 	country = models.CharField(max_length=40)
 	city = models.CharField(max_length=40)
@@ -87,6 +89,15 @@ class UserAccount(User):
 	class Meta:
 		verbose_name = 'Аккаунт'
 		verbose_name_plural = 'Аккаунты'
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserAccount.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
 class Chat(models.Model):
 	DIALOG = 'D'

@@ -18,7 +18,7 @@ def index(request):
 
 @login_required
 def main(request):
-    accounts = UserAccount.objects.filter(keyword_icontains='first_name')
+    accounts = UserAccount.objects.all()
     return render(request, 'main.html', {'accounts': accounts,})
 
 def registration(request):
