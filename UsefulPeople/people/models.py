@@ -1,19 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from django.utils import timezone
+from django.db.models.signals import post_save
 from django.dispatch import receiver
-# class Users(models.Model):
-# 	login = models.CharField(max_length=50, blank=False)
-# 	email = models.CharField(max_length=50, blank=False)
-# 	password = models.CharField(max_length=20, blank=False)
-# 	password2 = models.CharField(max_length=20, blank=False, editable=False)
-
-# 	def __str__(self):
-# 		return f"{self.login}"
-
-# 	class Meta:
-# 		verbose_name = 'Читатель'
-# 		verbose_name_plural = 'Читатели'
 
 class Skills(models.Model):
 	title = models.CharField(max_length=50)
@@ -68,10 +57,9 @@ class Achievements(models.Model):
 		verbose_name_plural = 'Достижения'
 
 class UserAccount(models.Model):
-	# user_id = models.ForeignKey(User, on_delete=models.CASCADE,)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	first_name_u = models.CharField(max_length=50, blank=False)
 	last_name_u = models.CharField(max_length=50, blank=False)
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	profession = models.CharField(max_length=100)
 	country = models.CharField(max_length=40)
 	city = models.CharField(max_length=40)
@@ -89,6 +77,15 @@ class UserAccount(models.Model):
 	class Meta:
 		verbose_name = 'Аккаунт'
 		verbose_name_plural = 'Аккаунты'
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
 
 class Chat(models.Model):
 	DIALOG = 'D'
