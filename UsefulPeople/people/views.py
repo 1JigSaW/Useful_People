@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import UserAccount, Skills, Experience, Education, Achievements, Chat
+from django.contrib.auth.models import User
 from django.db.models import Q
 from django.urls import reverse
 from django.views.generic import View
@@ -110,6 +111,7 @@ def chats(request):
 def account(request):
     comment = ''
     info = request.user
+    info_resume = UserAccount.objects.filter(user=request.user)
     if request.method == 'POST':
         form_resume = ResumeForm(request.POST, request.FILES, instance=request.user.useraccount)
         form_resume.user = request.user.useraccount
@@ -117,11 +119,6 @@ def account(request):
         form_exp = ExperienceForm(request.POST, request.FILES)
         form_education = EducationForm(request.POST, request.FILES)
         form_achievments = AchievementsForm(request.POST)
-        print(form_resume.errors)
-        print(form_skills.errors)
-        print(form_exp.errors)
-        print(form_education.errors)
-        print(form_achievments.errors)
         if form_resume.is_valid() and form_skills.is_valid() and \
             form_exp.is_valid() and form_education.is_valid() and \
             form_achievments.is_valid():
@@ -160,6 +157,7 @@ def account(request):
                 'form4': form4,
                 'form5': form5,
                 'info': info,
+                'info_resume': info_resume,
             }
         )
 

@@ -173,5 +173,5 @@ class AchievementsForm(ModelForm):
             'class': 'input_passwd',
             })
         self.fields['description'].widget = forms.Textarea(attrs={
-            'class': 'input_passwd',
+            'class': 'input_addinfo',
             })
