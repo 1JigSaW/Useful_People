@@ -130,10 +130,10 @@ def account(request):
             form3 = form_exp.save()
             form4 = form_education.save()
             form5 = form_achievments.save()
-            form.skills.add(form2)
-            form.experience.add(form3)
-            form.additional_education.add(form4)
-            form.achievements.add(form5)
+            form.skills.add(*[form2])
+            form.experience.add(*[form3])
+            form.additional_education.add(*[form4])
+            form.achievements.add(*[form5])
             comment = 'Вы успешно разместили резюме'
             return redirect('account')
         # else:

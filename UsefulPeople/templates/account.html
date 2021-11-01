@@ -24,25 +24,7 @@
 			<h1 class="page_title">Профиль:</h1>
 			<div class="resume_block">
 				<form method="POST" enctype="multipart/form-data" class="resume_form">{% csrf_token %}
-					{% for field in form %}
-						<li>{{ field }}</li>
-					{% endfor %}
-					{% for i in form2 %}
-						<li>{{ i }}</li>
-					{% endfor %}
-					{% for i in form2 %}
-						<li>{{ i }}</li>
-					{% endfor %}
-					{% for j in form3 %}
-						<li>{{ j }}</li>
-					{% endfor %}
-					{% for k in form4 %}
-						<li>{{ k }}</li>
-					{% endfor %}
-					{% for l in form5 %}
-						<li>{{ l }}</li>
-					{% endfor %}
-					<!-- {% for message in messages %}
+					{% for message in messages %}
 						<p>{{message}}</p>
 					{% endfor %}
 					<div class="form_resume_photo">
@@ -73,27 +55,63 @@
 						<label>Учебное<br>заведение</label>
 					</div>
 					{{ form.university }}
-					<div class="form_resume_skills">
+					<div class="form2_title">
 						<label>Навыки</label>
 					</div>
-					{{ form.skills }}
-					<div class="form_resume_exp">
-						<label>Опыт работ</label>
+					{{ form2.title }}
+					<div class="form3_c_name">
+						<label>Название<br>компании</label>
 					</div>
-					{{ form.experience }}
-					<div class="form_resume_university">
-						<label>Допоплнительное<br>образование</label>
+					{{ form3.company_name }}
+					<div class="form3_position">
+						<label>Позиция</label>
 					</div>
-					{{ form.additional_education }}
-					<div class="form_resume_achiv">
-						<label>Достижения</label>
+					{{ form3.position }}
+					<div class="form3_years">
+						<label>Лет<br>отработано</label>
 					</div>
-					{{ form.achievements }}
+					{{ form3.years_of_work }}
+					<div class="form3_mounth">
+						<label>Месяцев<br>отработано</label>
+					</div>
+					{{ form3.mounth_of_work }}
+					<div class="form3_ph">
+						<label>Фото</label>
+					</div>
+					{{ form3.photo_work }}
+					<div class="form4_un_name">
+						<label>Учебное<br>заведение</label>
+					</div>
+					{{ form4.university_name }}
+					<div class="form4_direction">
+						<label>Направление</label>
+					</div>
+					{{ form4.direction }}
+					<div class="form4_start">
+						<label>Начало<br>обучения</label>
+					</div>
+					{{ form4.start_training }}
+					<div class="form4_start">
+						<label>Конец<br>обучения</label>
+					</div>
+					{{ form4.end_training }}
+					<div class="form4_ph">
+						<label>Фото</label>
+					</div>
+					{{ form4.photo_education }}
+					<div class="form4_ph">
+						<label>Заголовок</label>
+					</div>
+					{{ form5.topic }}
+					<div class="form5_textarea">
+						<label>Описание</label>
+					</div>
+					{{ form5.description }}
 					<div class="form_resume_addinfo">
 						<label>Доп.<br>информация</label>
 					</div>
 					{{ form.additional_information }}
-					<div> -->
+					<div>
 						<button type="submit" class="resume_button">Сохранить</button>
 					</div>
 				</form>

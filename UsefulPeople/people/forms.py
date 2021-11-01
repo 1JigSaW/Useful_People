@@ -68,44 +68,32 @@ class ResumeForm(ModelForm):
             'additional_information',
         ]
 
-    # def __init__(self, *args, **kwargs):
-    #     super(ResumeForm, self).__init__(*args, **kwargs)
-    #     self.fields['photo'].widget = forms.FileInput(attrs={
-    #         'class': 'input_photo',
-    #         })
-    #     self.fields['first_name_u'].widget = forms.TextInput(attrs={
-    #         'class': 'input_log',
-    #         })
-    #     self.fields['last_name_u'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['profession'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['country'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['city'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['university'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['skills'].widget = forms.TextInput(attrs={
-    #         'class': 'input_skill',
-    #         })
-    #     self.fields['experience'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['additional_education'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['achievements'].widget = forms.TextInput(attrs={
-    #         'class': 'input_passwd',
-    #         })
-    #     self.fields['additional_information'].widget = forms.Textarea(attrs={
-    #         'class': 'input_addinfo',
-    #         })
+    def __init__(self, *args, **kwargs):
+        super(ResumeForm, self).__init__(*args, **kwargs)
+        self.fields['photo'].widget = forms.FileInput(attrs={
+            'class': 'input_photo',
+            })
+        self.fields['first_name_u'].widget = forms.TextInput(attrs={
+            'class': 'input_log',
+            })
+        self.fields['last_name_u'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['profession'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['country'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['city'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['university'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['additional_information'].widget = forms.Textarea(attrs={
+            'class': 'input_addinfo',
+            })
 
     # def save(self, commit=True):
     #     old_save_m2m = self.save_m2m
@@ -118,11 +106,36 @@ class SkillsForm(ModelForm):
         model = Skills
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super(SkillsForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+
 class ExperienceForm(ModelForm):
 
     class Meta:
         model = Experience
         fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ExperienceForm, self).__init__(*args, **kwargs)
+        self.fields['company_name'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['position'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['years_of_work'].widget = forms.NumberInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['mounth_of_work'].widget = forms.NumberInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['photo_work'].widget = forms.FileInput(attrs={
+            'class': 'input_passwd',
+            })
+
 
 class EducationForm(ModelForm):
 
@@ -130,8 +143,35 @@ class EducationForm(ModelForm):
         model = Education
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super(EducationForm, self).__init__(*args, **kwargs)
+        self.fields['university_name'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['direction'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['start_training'].widget = forms.DateInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['end_training'].widget = forms.DateInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['photo_education'].widget = forms.FileInput(attrs={
+            'class': 'input_passwd',
+            })
+
 class AchievementsForm(ModelForm):
 
     class Meta:
         model = Achievements
         fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(AchievementsForm, self).__init__(*args, **kwargs)
+        self.fields['topic'].widget = forms.TextInput(attrs={
+            'class': 'input_passwd',
+            })
+        self.fields['description'].widget = forms.Textarea(attrs={
+            'class': 'input_passwd',
+            })

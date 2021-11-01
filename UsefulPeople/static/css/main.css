@@ -754,3 +754,86 @@ body {
 	margin-top: 10px;
 
 }
+.form2_title {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+.form3_c_name {
+	float: left;
+	font-size: 21px;
+	padding-top: 12px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 20px;
+}
+.form3_position {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 27px;
+	margin-right: 20px;
+}
+.form3_years {
+	float: left;
+	font-size: 21px;
+	padding-top: 15px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 20px;
+}
+.form3_mounth {
+	float: left;
+	font-size: 21px;
+	padding-top: 13px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 25px;
+}
+.form3_ph {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 20px;
+	margin-right: 25px;
+}
+.form4_un_name {
+	float: left;
+	font-size: 21px;
+	padding-top: 17px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 20px;
+}
+.form4_direction {
+	float: left;
+	font-size: 30px;
+	margin-left: 13px;
+	margin-top: 21px;
+	margin-right: 20px;
+}
+.form4_start {
+	float: left;
+	font-size: 21px;
+	padding-top: 15px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 30px;
+}
+.form4_ph {
+	float: left;
+	font-size: 30px;
+	margin-left: 15px;
+	margin-top: 20px;
+	margin-right: 25px;
+}
+.form5_textarea {
+	float: left;
+	font-size: 20px;
+	padding-top: 17px;
+	margin-left: 15px;
+	text-align: left;
+	margin-right: 10px;
+}
