@@ -20,7 +20,7 @@ def index(request):
 
 @login_required
 def main(request):
-    accounts = UserAccount.objects.all()
+    accounts = UserAccount.objects.exclude(first_name_u='')
     return render(request, 'main.html', {'accounts': accounts,})
 
 def registration(request):
@@ -111,7 +111,7 @@ def chats(request):
 def account(request):
     comment = ''
     info = request.user
-    info_resume = UserAccount.objects.filter(user=request.user)
+    info_resume = UserAccount.objects.filter(user=request.user).exclude(first_name_u='')
     if request.method == 'POST':
         form_resume = ResumeForm(request.POST, request.FILES, instance=request.user.useraccount)
         form_resume.user = request.user.useraccount
@@ -127,22 +127,23 @@ def account(request):
             form3 = form_exp.save()
             form4 = form_education.save()
             form5 = form_achievments.save()
-            form.skills.add(*[form2])
-            form.experience.add(*[form3])
-            form.additional_education.add(*[form4])
-            form.achievements.add(*[form5])
+            form.skills.add(*form2)
+            form.experience.add(*form3)
+            form.additional_education.add(*form4)
+            form.achievements.add(*form5)
             comment = 'Вы успешно разместили резюме'
             return redirect('account')
-        # else:
-        #     form = ResumeForm()
-        #     comment = 'Некорректные данные'
-        #     return render(request, 'account.html', 
-        #         {
-        #             'form': form,
-        #             'info': info,
-        #             'comment': comment,
-        #         }
-        #     )
+        else:
+            form = ResumeForm()
+            comment = 'Некорректные данные'
+            return render(request, 'account.html', 
+                {
+                    'form': form,
+                    'info': info,
+                    'comment': comment,
+                    'info_resume': info_resume,
+                }
+            )
     else:
         form = ResumeForm()
         form2 = SkillsForm()
